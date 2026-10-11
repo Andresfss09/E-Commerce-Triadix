@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { prisma } from '@/lib/prisma';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, Truck, MessageSquare, ShieldCheck } from 'lucide-react';
 
 export default async function HomePage() {
   const products = await prisma.product.findMany({
@@ -112,24 +112,107 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Value Proposition */}
-      <section className="border-t border-zinc-800/50 bg-zinc-950/50 py-24 relative overflow-hidden">
-        <div className="container mx-auto px-4 max-w-7xl relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
-            <div className="space-y-6 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 fill-mode-both">
-              <div className="w-16 h-16 bg-white text-black flex items-center justify-center mx-auto text-2xl font-serif italic">01</div>
-              <h3 className="font-bold text-xl uppercase tracking-widest">Envíos Nacionales</h3>
-              <p className="text-zinc-500 font-light leading-relaxed max-w-xs mx-auto">Despachos directos desde Cali a cada rincón de Colombia. Cobertura garantizada.</p>
+      {/* Value Proposition & Brand Pillars */}
+      <section className="border-t border-zinc-900 bg-black/60 py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-zinc-900/30 via-transparent to-transparent pointer-events-none" />
+        
+        <div className="container mx-auto px-4 max-w-7xl relative z-10 space-y-12">
+          {/* Section Header */}
+          <div className="text-center space-y-3 max-w-xl mx-auto">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">
+              ESTÁNDARES DE MARCA
+            </span>
+            <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-white font-heading">
+              La Experiencia TRIADIX
+            </h2>
+            <p className="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
+              Diseño estructurado, confección con identidad en Cali y atención directa personalizada.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Pillar 01 */}
+            <div className="p-8 md:p-10 bg-zinc-950/70 border border-zinc-900 hover:border-zinc-700 rounded-3xl transition-all duration-300 backdrop-blur-sm group space-y-6 flex flex-col justify-between hover:shadow-2xl hover:shadow-white/[0.02]">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="w-14 h-14 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300 shadow-md">
+                    <Truck className="w-6 h-6 stroke-[1.75]" />
+                  </div>
+                  <span className="font-mono text-xs text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                    01 // LOGÍSTICA
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-bold text-lg md:text-xl uppercase tracking-wide text-white">
+                    Envíos Nacionales
+                  </h3>
+                  <p className="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
+                    Despachos directos desde nuestro centro logístico en Cali hacia todo el territorio nacional con transportadoras certificadas y seguimiento en tiempo real.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-zinc-900 text-[10px] font-mono uppercase tracking-widest text-zinc-500 flex items-center justify-between">
+                <span>Origen Cali, Colombia</span>
+                <span className="text-emerald-400 font-bold">2 - 4 Días</span>
+              </div>
             </div>
-            <div className="space-y-6 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 fill-mode-both">
-              <div className="w-16 h-16 bg-white text-black flex items-center justify-center mx-auto text-2xl font-serif italic">02</div>
-              <h3 className="font-bold text-xl uppercase tracking-widest">Checkout Ágil</h3>
-              <p className="text-zinc-500 font-light leading-relaxed max-w-xs mx-auto">Finaliza tu compra al instante a través de WhatsApp. Sin complicaciones.</p>
+
+            {/* Pillar 02 */}
+            <div className="p-8 md:p-10 bg-zinc-950/70 border border-zinc-900 hover:border-zinc-700 rounded-3xl transition-all duration-300 backdrop-blur-sm group space-y-6 flex flex-col justify-between hover:shadow-2xl hover:shadow-white/[0.02]">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="w-14 h-14 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300 shadow-md">
+                    <MessageSquare className="w-6 h-6 stroke-[1.75]" />
+                  </div>
+                  <span className="font-mono text-xs text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                    02 // ATENCIÓN
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-bold text-lg md:text-xl uppercase tracking-wide text-white">
+                    Checkout Directo
+                  </h3>
+                  <p className="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
+                    Confirmación de orden 1 a 1 a través de nuestro WhatsApp oficial. Pagos ágiles y seguros mediante transferencia bancaria (Bancolombia, Nequi y Daviplata).
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-zinc-900 text-[10px] font-mono uppercase tracking-widest text-zinc-500 flex items-center justify-between">
+                <span>Canal Verificado</span>
+                <span className="text-emerald-400 font-bold">Sin Esperas</span>
+              </div>
             </div>
-            <div className="space-y-6 text-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 fill-mode-both">
-              <div className="w-16 h-16 bg-white text-black flex items-center justify-center mx-auto text-2xl font-serif italic">03</div>
-              <h3 className="font-bold text-xl uppercase tracking-widest">Material Premium</h3>
-              <p className="text-zinc-500 font-light leading-relaxed max-w-xs mx-auto">Telas seleccionadas, cortes exactos y detalles que marcan la diferencia.</p>
+
+            {/* Pillar 03 */}
+            <div className="p-8 md:p-10 bg-zinc-950/70 border border-zinc-900 hover:border-zinc-700 rounded-3xl transition-all duration-300 backdrop-blur-sm group space-y-6 flex flex-col justify-between hover:shadow-2xl hover:shadow-white/[0.02]">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="w-14 h-14 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300 shadow-md">
+                    <ShieldCheck className="w-6 h-6 stroke-[1.75]" />
+                  </div>
+                  <span className="font-mono text-xs text-zinc-500 group-hover:text-zinc-300 transition-colors">
+                    03 // CONFECCIÓN
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-bold text-lg md:text-xl uppercase tracking-wide text-white">
+                    Material Premium
+                  </h3>
+                  <p className="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
+                    Algodón de alto gramaje (240g a 320g), costuras reforzadas y patronaje oversized contemporáneo elaborado con manufactura ética en el Valle del Cauca.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-zinc-900 text-[10px] font-mono uppercase tracking-widest text-zinc-500 flex items-center justify-between">
+                <span>Garantía de Calidad</span>
+                <span className="text-emerald-400 font-bold">30 Días</span>
+              </div>
             </div>
           </div>
         </div>
