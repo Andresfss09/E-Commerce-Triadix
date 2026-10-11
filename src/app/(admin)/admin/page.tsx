@@ -80,34 +80,34 @@ async function DashboardContent() {
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 space-y-10 relative">
       {/* Background Editorial Streetwear Layer */}
-      <div className="absolute -top-12 -left-8 -right-8 md:-top-16 md:-left-12 md:-right-12 h-[520px] pointer-events-none overflow-hidden select-none -z-0">
+      <div className="absolute -top-12 -left-8 -right-8 md:-top-16 md:-left-12 md:-right-12 h-[580px] pointer-events-none overflow-hidden select-none -z-0">
         <Image
           src="/hero-streetwear.jpg"
           alt="TRIADIX Operations Colectivo"
           fill
           priority
           quality={95}
-          className="object-cover object-top filter brightness-[0.35] contrast-[1.10] opacity-40"
+          className="object-cover object-[center_22%] filter brightness-[0.72] contrast-[1.08]"
         />
-        {/* Gradients to blend smoothly into pure black */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-transparent to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_transparent_0%,_var(--background)_80%)]" />
+        {/* Balanced cinematic overlays: photo is crisp & visible, text is 100% readable */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-black/60" />
       </div>
 
       <div className="relative z-10 space-y-10">
         {/* Executive Header */}
-        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-900 pb-8">
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-900/80 pb-8">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900/80 border border-zinc-800 rounded-full text-[11px] font-mono tracking-widest uppercase text-zinc-400">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/80 border border-white/10 backdrop-blur-md rounded-full text-[11px] font-mono tracking-widest uppercase text-zinc-300 shadow-lg">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span>Sistema Operativo · Cali, Colombia</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-black tracking-tight uppercase text-white font-heading">
+          <h1 className="text-3xl md:text-5xl font-black tracking-tight uppercase text-white font-heading drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
             Panel Central
           </h1>
-          <p className="text-zinc-500 font-mono text-xs">
-            Sesión activa como: <span className="text-zinc-300 font-medium">{user.email}</span>
+          <p className="text-zinc-400 font-mono text-xs drop-shadow-md">
+            Sesión activa como: <span className="text-white font-medium">{user.email}</span>
           </p>
         </div>
 
