@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { connection } from 'next/server';
@@ -77,9 +78,26 @@ async function DashboardContent() {
     .slice(0, 5);
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 space-y-10">
-      {/* Executive Header */}
-      <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-900 pb-8">
+    <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 space-y-10 relative">
+      {/* Background Editorial Streetwear Layer */}
+      <div className="absolute -top-12 -left-8 -right-8 md:-top-16 md:-left-12 md:-right-12 h-[520px] pointer-events-none overflow-hidden select-none -z-0">
+        <Image
+          src="/hero-streetwear.jpg"
+          alt="TRIADIX Operations Colectivo"
+          fill
+          priority
+          quality={95}
+          className="object-cover object-top filter brightness-[0.35] contrast-[1.10] opacity-40"
+        />
+        {/* Gradients to blend smoothly into pure black */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-transparent to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_transparent_0%,_var(--background)_80%)]" />
+      </div>
+
+      <div className="relative z-10 space-y-10">
+        {/* Executive Header */}
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-900 pb-8">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900/80 border border-zinc-800 rounded-full text-[11px] font-mono tracking-widest uppercase text-zinc-400">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -403,6 +421,7 @@ async function DashboardContent() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
