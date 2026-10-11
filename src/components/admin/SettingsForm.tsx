@@ -8,13 +8,22 @@ import {
   CheckCircle2, 
   MessageSquare, 
   Mail, 
-  Instagram, 
   Megaphone, 
   Save, 
   User, 
   Sparkles,
   ShieldCheck
 } from 'lucide-react';
+
+function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
 
 type SettingsFormProps = {
   config: {
@@ -130,7 +139,7 @@ export function SettingsForm({ config }: SettingsFormProps) {
             SECCIÓN 03 // PRESENCIA DIGITAL
           </span>
           <h2 className="text-lg font-bold uppercase text-white flex items-center gap-2">
-            <Instagram className="w-4 h-4 text-purple-400" />
+            <InstagramIcon className="w-4 h-4 text-purple-400" />
             <span>Redes Sociales de la Marca</span>
           </h2>
         </div>
