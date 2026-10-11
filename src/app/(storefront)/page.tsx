@@ -1,7 +1,8 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { prisma } from '@/lib/prisma';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default async function HomePage() {
   const products = await prisma.product.findMany({
@@ -13,33 +14,51 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col bg-background text-foreground selection:bg-white selection:text-black">
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-border/50">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900/50 via-background to-background z-0" />
+      <section className="relative min-h-[90vh] md:min-h-[92vh] flex items-center justify-center overflow-hidden border-b border-zinc-900">
+        {/* Background Streetwear Editorial Image */}
+        <div className="absolute inset-0 z-0 select-none">
+          <Image
+            src="/hero-streetwear.jpg"
+            alt="TRIADIX Streetwear Colectivo Cali"
+            fill
+            priority
+            quality={95}
+            className="object-cover object-center filter brightness-[0.70] contrast-[1.10] scale-[1.02] transform transition-transform duration-1000 ease-out"
+          />
+          {/* Multi-layered cinematic shadows & vignettes */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.7)_100%)]" />
+        </div>
         
-        <div className="relative z-10 text-center space-y-8 px-4 max-w-4xl mx-auto">
-          <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out fill-mode-both">
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-4 text-white drop-shadow-2xl">
+        <div className="relative z-10 text-center space-y-6 md:space-y-8 px-4 max-w-5xl mx-auto py-20">
+          <div className="animate-in fade-in slide-in-from-bottom-6 duration-700 ease-out fill-mode-both">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/75 border border-white/20 backdrop-blur-md text-[11px] font-mono uppercase tracking-widest text-zinc-300 shadow-2xl mb-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>DISEÑO INDEPENDIENTE · CALI, COLOMBIA</span>
+            </div>
+          </div>
+
+          <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100 ease-out fill-mode-both">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] leading-[0.9]">
               Rompe <br className="md:hidden" />
-              <span className="text-zinc-500">Las Reglas.</span>
+              <span className="text-zinc-400">Las Reglas.</span>
             </h1>
           </div>
           
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 ease-out fill-mode-both">
-            <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-2xl text-zinc-200/90 font-light max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
               Streetwear premium diseñado desde cero en Cali, Colombia. Exclusividad y estilo para las calles.
             </p>
           </div>
 
-          <div className="pt-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 ease-out fill-mode-both">
+          <div className="pt-4 md:pt-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 ease-out fill-mode-both">
             <Link 
               href="/catalog" 
-              className={buttonVariants({ 
-                size: "lg", 
-                className: "bg-white text-black hover:bg-zinc-200 hover:scale-105 transition-all duration-300 text-lg px-8 py-6 rounded-none font-bold tracking-widest group" 
-              })}
+              className="inline-flex items-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-white text-black hover:bg-zinc-200 font-mono font-black text-xs md:text-sm tracking-widest uppercase transition-all duration-300 shadow-2xl hover:scale-105 group rounded-xl"
             >
-              EXPLORAR COLECCIÓN
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <span>EXPLORAR COLECCIÓN</span>
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1.5 transition-transform" />
             </Link>
           </div>
         </div>
